@@ -8,43 +8,48 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Off-white warm background */
-    --background: 30 40% 98%;
-    --foreground: 0 0% 12%;
+    /* Technical off-white background */
+    --background: 0 0% 97%;
+    --foreground: 0 0% 8%;
 
-    --card: 30 40% 97%;
-    --card-foreground: 0 0% 12%;
+    --card: 0 0% 99%;
+    --card-foreground: 0 0% 8%;
 
-    --popover: 30 40% 98%;
-    --popover-foreground: 0 0% 12%;
+    --popover: 0 0% 97%;
+    --popover-foreground: 0 0% 8%;
 
-    /* Muted sage green accent */
-    --primary: 165 28% 42%;
-    --primary-foreground: 30 40% 98%;
+    /* Terminal green accent */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 30 25% 92%;
-    --secondary-foreground: 0 0% 12%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 8%;
 
-    --muted: 30 25% 94%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 165 25% 88%;
-    --accent-foreground: 0 0% 12%;
+    --accent: 142 30% 85%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 70% 50%;
-    --destructive-foreground: 30 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 30 20% 88%;
-    --input: 30 20% 88%;
-    --ring: 165 28% 42%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 142 76% 36%;
 
-    --radius: 0.25rem;
+    --radius: 0rem;
     
     /* Custom design tokens */
-    --heading-font: 'Instrument Serif', serif;
-    --body-font: 'Work Sans', sans-serif;
+    --heading-font: 'JetBrains Mono', monospace;
+    --body-font: 'Space Mono', monospace;
+    --code-bg: 0 0% 94%;
     
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Grid pattern */
+    --grid-size: 20px;
+    --grid-color: 0 0% 90%;
 
     --sidebar-background: 0 0% 98%;
 
@@ -110,11 +115,30 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
     font-family: var(--body-font);
+    background-image: 
+      linear-gradient(hsl(var(--grid-color)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-color)) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    background-position: -1px -1px;
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--heading-font);
-    font-weight: 400;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  
+  .terminal-window {
+    background: hsl(var(--code-bg));
+    border: 1px solid hsl(var(--border));
+    font-family: var(--heading-font);
+  }
+  
+  .code-block {
+    background: hsl(var(--code-bg));
+    border-left: 2px solid hsl(var(--primary));
+    font-family: var(--heading-font);
+    font-size: 0.875rem;
   }
 }
 
